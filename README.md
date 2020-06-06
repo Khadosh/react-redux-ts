@@ -1,3 +1,6 @@
+## Live Demo
+https://stoic-fermi-6acad6.netlify.app/
+
 ## How To Run
 ```sh
 $ cd react-redux-ts
@@ -13,19 +16,20 @@ $ yarn start
 Since this project is not using predefiend configuration for eslint therefore it's needed to overrid that configuration following the `.env.example` file.
 
 ## Tasks
-[x] Setup Project
-[ ] Decide Folder structure
-[ ] Create Responsive Main Layout
-[ ] Create main logic and retrieve all posts from reddit + UT
-[ ] Create Post Payload to filter Post information + UT
-[ ] Create Post List component - Drawer + Detail
-[ ] Show post detail on click + UT - Expandable vs Modal
-[ ] Remove Post from list + UT
-[ ] Remove all posts + UT
-[ ] Fetch more posts + UT
-[ ] Pagination vs Infinite Scrolling + UT
-[ ] Filter + UT
-[ ] Add CSS Animations
+- [x] Setup Project
+- [x] Deploy the repo on Netlify
+- [ ] Decide Folder structure
+- [ ] Create Responsive Main Layout
+- [ ] Create main logic and retrieve all posts from reddit + UT
+- [ ] Create Post Payload to filter Post information + UT
+- [ ] Create Post List component - Drawer + Detail
+- [ ] Show post detail on click + UT - Expandable vs Modal
+- [ ] Remove Post from list + UT
+- [ ] Remove all posts + UT
+- [ ] Fetch more posts + UT
+- [ ] Pagination vs Infinite Scrolling + UT
+- [ ] Filter + UT
+- [ ] Add CSS Animations
 
 ## Online Resources
 - https://www.npmjs.com/package/cra-template-redux-typescript
