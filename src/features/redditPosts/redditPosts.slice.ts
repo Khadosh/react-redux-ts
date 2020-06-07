@@ -69,11 +69,12 @@ export const fetchPosts = (after?: string): AppThunk => async (dispatch) => {
     console.log(url);
     const result = await fetch(url).then((result: any) => result.json());
     const postList = result.data.children.map(
-      ({ data: { id, title, thumbnail, preview, created, num_comments } }: any) => ({
+      ({ data: { id, title, thumbnail, author, created, num_comments } }: any) => ({
         id,
+        author,
         title,
-        thumbnail,
-        img: preview ? preview.images[0].source.url : '',
+        thumbnail:
+          thumbnail === 'default' ? 'https://picsum.photos/100?grayscale&blur=2' : thumbnail,
         created,
         comments_number: num_comments,
         viewed: false,
