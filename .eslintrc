@@ -15,7 +15,13 @@
   },
   "rules": {
     "semi": "error",
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "@typescript-eslint/no-explicit-any": [
+      "off",
+      {
+        "ignoreRestArgs": true
+      }
+    ]
   },
   "settings": {
     "react": {

@@ -17,6 +17,7 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   flex-grow: 1;
+  max-height: calc(100vh - 120px);
   display: flex;
   flex-direction: row;
 `;

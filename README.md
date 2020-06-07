@@ -48,6 +48,8 @@ Since this project is not using predefiend configuration for eslint therefore it
 - https://medium.com/building-crowdriff/styled-components-to-use-or-not-to-use-a6bb4a7ffc21#:~:text=Styled%20Components%20help%20keep%20the,multitude%20of%20conditional%20class%20names.
 - https://testing-library.com/docs/react-testing-library/intro#:~:text=The%20React%20Testing%20Library%20is,that%20encourages%20better%20testing%20practices.&text=The%20utilities%20this%20library%20provides,same%20way%20the%20user%20would.
 - https://testing-library.com/docs/guiding-principles
+- https://momentjs.com/docs/#/displaying/fromnow/
+- https://styled-components.com/docs/basics#animations
 
 ## Endpoints
 https://www.reddit.com/top.json?limit=10&t=month&after=<Provided after first request>
