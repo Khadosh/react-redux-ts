@@ -119,3 +119,7 @@ export const DismissButton = styled.button`
     outline: none;
   }
 `;
+
+export const DrawerPostSkeletonBody = styled.div`
+  display: flex;
+`;

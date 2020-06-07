@@ -24,6 +24,9 @@ export const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
+    fetchingPosts: (state) => {
+      state.fetching = true;
+    },
     fetchPostSuccess: (state, action: PayloadAction<any>) => {
       const { postList, after } = action.payload;
       state.postList = state.postList.concat(postList);
@@ -61,6 +64,7 @@ export const postsSlice = createSlice({
 });
 
 export const {
+  fetchingPosts,
   fetchPostSuccess,
   fetchPostFailure,
   choosePost,
@@ -74,7 +78,7 @@ export const {
 export const fetchPosts = (after?: string): AppThunk => async (dispatch) => {
   try {
     const url = `https://www.reddit.com/top.json?limit=50${after ? `&after=${after}` : ''}`;
-    console.log(url);
+    dispatch(fetchingPosts());
     const result = await fetch(url).then((result: any) => result.json());
     const postList = result.data.children.map(
       ({ data: { id, title, thumbnail, author, created, num_comments } }: any) => ({
@@ -105,5 +109,6 @@ export const selectPosts = (state: RootState): PostState[] =>
   state.posts.postList.filter((post) => !post.dismissed);
 export const selectPost = (state: RootState): any => state.posts.selectedPost;
 export const selectDismissingAll = (state: RootState): any => state.posts.dismissingAll;
+export const selectIsFetching = (state: RootState): any => state.posts.fetching;
 
 export default postsSlice.reducer;
