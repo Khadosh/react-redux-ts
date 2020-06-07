@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppLayout, Header, Main, Footer } from './App.styles';
 import RedditPosts from './features/redditPosts';
+import DismissAll from './components/dismissAll';
 
 const App: React.FC = () => {
   return (
@@ -11,7 +12,9 @@ const App: React.FC = () => {
       <Main>
         <RedditPosts />
       </Main>
-      <Footer></Footer>
+      <Footer>
+        <DismissAll />
+      </Footer>
     </AppLayout>
   );
 };

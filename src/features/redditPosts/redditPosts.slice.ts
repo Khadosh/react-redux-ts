@@ -8,6 +8,7 @@ interface DefaultState {
   after?: string;
   fetching?: boolean;
   errorMessage?: string;
+  dismissingAll?: boolean;
 }
 
 const initialState: DefaultState = {
@@ -15,7 +16,8 @@ const initialState: DefaultState = {
   selectedPost: undefined,
   after: '',
   fetching: false,
-  errorMessage: ''
+  errorMessage: '',
+  dismissingAll: false
 };
 
 export const postsSlice = createSlice({
@@ -28,11 +30,13 @@ export const postsSlice = createSlice({
       state.after = after;
       state.fetching = false;
       state.errorMessage = '';
+      state.dismissingAll = false;
     },
     fetchPostFailure: (state, action: PayloadAction<any>) => {
       const { errorMessage } = action.payload;
       state.fetching = false;
       state.errorMessage = errorMessage;
+      state.dismissingAll = false;
     },
     choosePost: (state, action: PayloadAction<string>) => {
       const id = action.payload;
@@ -49,6 +53,9 @@ export const postsSlice = createSlice({
       const id = action.payload;
       const post = state.postList.find((post) => post.id === id);
       if (post) post.dismissed = true;
+    },
+    dismissAll: (state) => {
+      state.dismissingAll = true;
     }
   }
 });
@@ -58,7 +65,8 @@ export const {
   fetchPostFailure,
   choosePost,
   clearPost,
-  dismissPost
+  dismissPost,
+  dismissAll
 } = postsSlice.actions;
 
 /* Action Creators, used to call async methods */
@@ -96,5 +104,6 @@ export const fetchPosts = (after?: string): AppThunk => async (dispatch) => {
 export const selectPosts = (state: RootState): PostState[] =>
   state.posts.postList.filter((post) => !post.dismissed);
 export const selectPost = (state: RootState): any => state.posts.selectedPost;
+export const selectDismissingAll = (state: RootState): any => state.posts.dismissingAll;
 
 export default postsSlice.reducer;

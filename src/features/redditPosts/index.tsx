@@ -6,7 +6,8 @@ import {
   clearPost,
   dismissPost,
   selectPosts,
-  selectPost
+  selectPost,
+  selectDismissingAll
 } from './redditPosts.slice';
 import DrawerPost from '../../components/drawerPost';
 import PostDetails from '../../components/postDetail';
@@ -23,6 +24,7 @@ const RedditPosts: FC = () => {
 
   const postList = useSelector(selectPosts);
   const selectedPost = useSelector(selectPost);
+  const dismissingAll = useSelector(selectDismissingAll);
   const handleDismissAnimation = (id: string) => {
     return (evt: any): void => {
       evt.stopPropagation();
@@ -40,7 +42,7 @@ const RedditPosts: FC = () => {
             onSelection={(id: string) => dispatch(choosePost(id))}
             onDismissAnimationStart={handleDismissAnimation}
             onDismissAnimationEnd={(id: string) => dispatch(dismissPost(id))}
-            isDismissing={postToDismissId === post.id}
+            isDismissing={postToDismissId === post.id || dismissingAll}
           />
         ))}
       </Drawer>
