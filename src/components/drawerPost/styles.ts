@@ -1,5 +1,9 @@
 import styled, { keyframes, css } from 'styled-components';
 
+interface drawerPostContainerProps {
+  isDismissing: boolean;
+}
+
 const removePostAnimation = keyframes`
   0% {
     height: 270px;
@@ -29,10 +33,10 @@ export const DrawerPostContainer = styled.div`
     cursor: pointer;
   }
 
-  ${({ isDismissing }) =>
+  ${({ isDismissing }: drawerPostContainerProps) =>
     isDismissing &&
     css`
-      overflow: hidden;
+      border: none;
       animation: ${removePostAnimation} 0.5s linear;
     `}
 `;
@@ -79,6 +83,7 @@ export const DrawerPostHeaderTitle = styled.div`
 export const DrawerPostBody = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 
   & > img {
     height: 50px;
@@ -86,27 +91,31 @@ export const DrawerPostBody = styled.div`
     border-radius: 50%;
     margin-right: 20px;
   }
+
+  & > p {
+    margin: 0;
+  }
 `;
 
 export const DrawerPostFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
 
-  & > button {
-    cursor: pointer;
-    border-radius: 50px 50px 50px 50px;
-    border: 1px solid #846060;
-    background-color: rgba(255, 120, 120, 0.9);
-    color: white;
-    transition: 0.3s background-color;
-  }
+export const DismissButton = styled.button`
+  cursor: pointer;
+  border-radius: 50px 50px 50px 50px;
+  border: 1px solid #846060;
+  background-color: rgba(255, 120, 120, 0.9);
+  color: white;
+  transition: 0.3s background-color;
 
-  & > button:hover {
+  &:hover {
     background-color: rgba(255, 120, 120, 1);
   }
 
-  & > button:focus {
+  &:focus {
     outline: none;
   }
 `;

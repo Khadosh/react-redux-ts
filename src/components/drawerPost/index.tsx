@@ -7,7 +7,8 @@ import {
   DrawerPostHeader,
   DrawerPostHeaderTitle,
   DrawerPostBody,
-  DrawerPostFooter
+  DrawerPostFooter,
+  DismissButton
 } from './styles';
 
 interface DefaultProps {
@@ -44,7 +45,9 @@ const DrawerPost: FC<DefaultProps> = ({
     </DrawerPostBody>
     <DrawerPostFooter>
       <strong>{comments_number} Comments!</strong>
-      <button onClick={(evt: any) => onDismissAnimationStart(id)(evt)}>Dismiss</button>
+      <DismissButton onClick={(evt: any) => onDismissAnimationStart(id)(evt)}>
+        Dismiss
+      </DismissButton>
     </DrawerPostFooter>
   </DrawerPostContainer>
 );

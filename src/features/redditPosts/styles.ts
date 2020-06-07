@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface DrawerProps {
+  shouldCollapse: boolean;
+}
+
 export const Drawer = styled.div`
   width: 350px;
   min-width: 350px;
@@ -10,11 +14,6 @@ export const Drawer = styled.div`
 
   @media screen and (max-width: 768px) {
     min-width: 0;
-    width: ${({ shouldCollapse }) => (shouldCollapse ? 0 : '100%')};
+    width: ${({ shouldCollapse }: DrawerProps) => (shouldCollapse ? 0 : '100%')};
   }
-`;
-
-export const Details = styled.div`
-  flex-grow: 1;
-  background-color: lightcyan;
 `;

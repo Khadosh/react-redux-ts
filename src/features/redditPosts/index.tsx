@@ -9,9 +9,10 @@ import {
   selectPost
 } from './redditPosts.slice';
 import DrawerPost from '../../components/drawerPost';
+import PostDetails from '../../components/postDetail';
 import { PostState } from '../../common/types';
 
-import { Drawer, Details } from './styles';
+import { Drawer } from './styles';
 
 const RedditPosts: FC = () => {
   const [postToDismissId, setPostToDismissId] = useState('');
@@ -31,7 +32,7 @@ const RedditPosts: FC = () => {
 
   return (
     <>
-      <Drawer shouldCollapse={!!selectedPost} postList={postList}>
+      <Drawer shouldCollapse={!!selectedPost}>
         {postList.map((post: PostState) => (
           <DrawerPost
             key={post.id}
@@ -43,9 +44,7 @@ const RedditPosts: FC = () => {
           />
         ))}
       </Drawer>
-      <Details onClick={() => dispatch(clearPost())}>
-        {selectedPost && JSON.stringify(selectedPost)}
-      </Details>
+      <PostDetails onClose={() => dispatch(clearPost())} post={selectedPost} />
     </>
   );
 };
