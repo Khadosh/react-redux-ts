@@ -12,7 +12,7 @@ import { utcFromNow } from '../../common/helpers';
 import { Drawer, DrawerPost, Details } from './styles';
 
 const RedditPosts: FC = () => {
-  const [postToDismiss, setPostToDismiss] = useState('');
+  const [postToDismissId, setPostToDismissId] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPosts());
@@ -20,23 +20,29 @@ const RedditPosts: FC = () => {
 
   const postList = useSelector(selectPosts);
   const selectedPost = useSelector(selectPost);
+  const handleDismiss = (id: string) => {
+    return (evt: any): void => {
+      evt.stopPropagation();
+      setPostToDismissId(id);
+    };
+  };
 
   return (
     <>
       <Drawer shouldCollapse={!!selectedPost} postList={postList}>
-        {postList.map(({ id, title, created, thumbnail, comments_number, viewed }) => (
+        {postList.map(({ id, title, created, thumbnail, img, comments_number, viewed }) => (
           <DrawerPost
             key={id}
             onClick={() => dispatch(choosePost(id))}
-            className={postToDismiss === id ? 'dismissing' : ''}
+            className={postToDismissId === id ? 'dismissing' : ''}
             onAnimationEnd={() => dispatch(dismissPost(id))}
           >
             <h5>{title}</h5>
             <p>{viewed ? 'Viewed' : 'Unseen'}</p>
             <p>{utcFromNow(created)}</p>
-            <img src={thumbnail} alt={title} />
+            <img src={thumbnail === 'default' ? img : thumbnail} alt={title} />
             <strong>{comments_number}</strong>
-            <button onClick={() => setPostToDismiss(id)}>dismiss</button>
+            <button onClick={handleDismiss(id)}>dismiss</button>
           </DrawerPost>
         ))}
       </Drawer>

@@ -20,11 +20,11 @@ Since this project is not using predefiend configuration for eslint therefore it
 - [x] Deploy the repo on Netlify
 - [x] Decide Folder structure
 - [x] Create Responsive Main Layout
-- [ ] Create main logic and retrieve all posts from reddit + UT
-- [ ] Create Post Payload to filter Post information + UT
-- [ ] Create Post List component - Drawer + Detail
-- [ ] Show post detail on click + UT - Expandable vs Modal
-- [ ] Remove Post from list + UT
+- [x] Create main logic and retrieve all posts from reddit + UT
+- [x] Create Post Payload to filter Post information + UT
+- [x] Create Post List component - Drawer + Detail
+- [x] Show post detail on click + UT - Expandable vs Modal
+- [x] Remove Post from list + UT
 - [ ] Remove all posts + UT
 - [ ] Fetch more posts + UT
 - [ ] Pagination vs Infinite Scrolling + UT
@@ -50,6 +50,7 @@ Since this project is not using predefiend configuration for eslint therefore it
 - https://testing-library.com/docs/guiding-principles
 - https://momentjs.com/docs/#/displaying/fromnow/
 - https://styled-components.com/docs/basics#animations
+- https://stackoverflow.com/questions/24111813/
 
 ## Endpoints
 https://www.reddit.com/top.json?limit=10&t=month&after=<Provided after first request>

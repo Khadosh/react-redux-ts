@@ -85,8 +85,6 @@ export const fetchPosts = (after?: string): AppThunk => async (dispatch) => {
       postList,
       after: result.data.after
     };
-
-    console.log(payload);
     dispatch(fetchPostSuccess(payload));
   } catch (err) {
     dispatch(fetchPostFailure({ errorMessage: err.message }));
