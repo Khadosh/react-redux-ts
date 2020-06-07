@@ -7,7 +7,7 @@ const removePostAnimation = keyframes`
   }
 
   40% {
-    margin-left: -768px;
+    margin-left: -300px;
     height: 150px;
   }
 
@@ -18,18 +18,15 @@ const removePostAnimation = keyframes`
 `;
 
 export const DrawerPostContainer = styled.div`
-  background-color: #ddd;
+  background-color: #5a5a5a;
   width: calc(100% - 20px);
-  padding: 0 10px;
+  padding: 0 10px 10px;
   overflow: hidden;
   border-bottom: 2px solid black;
+  color: white;
 
-  @media screen and (max-width: 768px) {
-    width: 100vw;
-  }
-
-  & > img {
-    height: 100px;
+  &:hover {
+    cursor: pointer;
   }
 
   ${({ isDismissing }) =>
@@ -41,21 +38,75 @@ export const DrawerPostContainer = styled.div`
 `;
 
 export const DrawerPostHeader = styled.div`
-  & > .viewed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  & > p {
+    text-align: right;
+    background-color: #989898;
+    box-shadow: inset 0px 0px 3px 2px rgb(130, 130, 130);
+    border-radius: 50px 50px 50px 50px;
+    padding: 5px 10px;
+  }
+`;
+
+export const DrawerPostHeaderTitle = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > div {
     height: 20px;
     width: 20px;
     border-radius: 50%;
+    transition: 0.3s background-color;
+  }
+
+  & > .viewed {
     background-color: #008471;
   }
 
   & > .unseen {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
     background-color: #fffb7c;
+  }
+
+  & > h5 {
+    margin: 0 10px;
   }
 `;
 
-export const DrawerPostBody = styled.div``;
+export const DrawerPostBody = styled.div`
+  display: flex;
+  align-items: center;
 
-export const DrawerPostFooter = styled.div``;
+  & > img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+`;
+
+export const DrawerPostFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > button {
+    cursor: pointer;
+    border-radius: 50px 50px 50px 50px;
+    border: 1px solid #846060;
+    background-color: rgba(255, 120, 120, 0.9);
+    color: white;
+    transition: 0.3s background-color;
+  }
+
+  & > button:hover {
+    background-color: rgba(255, 120, 120, 1);
+  }
+
+  & > button:focus {
+    outline: none;
+  }
+`;

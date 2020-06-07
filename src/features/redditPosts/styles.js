@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Drawer = styled.div`
-  width: 300px;
-  min-width: 300px;
+  width: 350px;
+  min-width: 350px;
   background-color: #eee;
   transition: 300ms all;
   overflow-y: scroll;

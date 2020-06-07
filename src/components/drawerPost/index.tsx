@@ -2,7 +2,13 @@ import React, { FC } from 'react';
 import { PostState } from '../../common/types';
 import { utcFromNow } from '../../common/helpers';
 
-import { DrawerPostContainer, DrawerPostHeader, DrawerPostBody, DrawerPostFooter } from './styles';
+import {
+  DrawerPostContainer,
+  DrawerPostHeader,
+  DrawerPostHeaderTitle,
+  DrawerPostBody,
+  DrawerPostFooter
+} from './styles';
 
 interface DefaultProps {
   key: string;
@@ -26,8 +32,10 @@ const DrawerPost: FC<DefaultProps> = ({
     isDismissing={isDismissing}
   >
     <DrawerPostHeader>
-      <div className={viewed ? 'viewed' : 'unseen'} />
-      <h5>{author}</h5>
+      <DrawerPostHeaderTitle>
+        <div className={viewed ? 'viewed' : 'unseen'} />
+        <h5>{author}</h5>
+      </DrawerPostHeaderTitle>
       <p>{utcFromNow(created)}</p>
     </DrawerPostHeader>
     <DrawerPostBody>
@@ -35,8 +43,8 @@ const DrawerPost: FC<DefaultProps> = ({
       <p>{title}</p>
     </DrawerPostBody>
     <DrawerPostFooter>
-      <strong>{comments_number}</strong>
-      <button onClick={(evt: any) => onDismissAnimationStart(id)(evt)}>dismiss</button>
+      <strong>{comments_number} Comments!</strong>
+      <button onClick={(evt: any) => onDismissAnimationStart(id)(evt)}>Dismiss</button>
     </DrawerPostFooter>
   </DrawerPostContainer>
 );
