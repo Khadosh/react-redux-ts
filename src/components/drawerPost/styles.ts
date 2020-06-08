@@ -104,15 +104,15 @@ export const DrawerPostFooter = styled.div`
 `;
 
 export const DismissButton = styled.button`
-  cursor: pointer;
+  padding: 5px 10px;
   border-radius: 50px 50px 50px 50px;
   border: 1px solid #846060;
-  background-color: rgba(255, 120, 120, 0.9);
+  background-color: rgba(255, 120, 120, 1);
   color: white;
   transition: 0.3s background-color;
 
   &:hover {
-    background-color: rgba(255, 120, 120, 1);
+    cursor: pointer;
   }
 
   &:focus {

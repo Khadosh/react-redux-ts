@@ -37,6 +37,13 @@ const RedditPosts: FC = () => {
     };
   };
 
+  const handleDismiss = (id: string) => {
+    if (!dismissingAll) {
+      dispatch(dismissPost(id));
+      setPostToDismissId('');
+    }
+  };
+
   return (
     <>
       <Drawer shouldCollapse={!!selectedPost} removeScroll={dismissingAll}>
@@ -46,7 +53,7 @@ const RedditPosts: FC = () => {
             post={post}
             onSelection={(id: string) => dispatch(choosePost(id))}
             onDismissAnimationStart={handleDismissAnimation}
-            onDismissAnimationEnd={(id: string) => !dismissingAll && dispatch(dismissPost(id))}
+            onDismissAnimationEnd={handleDismiss}
             isDismissing={postToDismissId === post.id || dismissingAll}
           />
         ))}
