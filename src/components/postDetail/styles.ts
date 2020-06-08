@@ -17,6 +17,7 @@ export const PostDetailsContainer = styled.div`
     right: 0;
     transition: 0.3s all ease;
     margin-left: ${({ shouldHide }: props) => (shouldHide ? '100vw' : 0)};
+    box-shadow: -5px 0px 5px 0px rgba(0, 0, 0, 0.75);
   }
 `;
 

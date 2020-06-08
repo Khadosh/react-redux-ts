@@ -14,7 +14,7 @@ interface DefaultProps {
 }
 
 const PostDetails: FC<DefaultProps> = ({ post = {}, onClose }) => {
-  const shouldHide = !post.hasOwnProperty('author');
+  const shouldHide = !Object.keys(post).length;
   const { author, thumbnail, title } = post;
   return (
     <PostDetailsContainer shouldHide={shouldHide}>
