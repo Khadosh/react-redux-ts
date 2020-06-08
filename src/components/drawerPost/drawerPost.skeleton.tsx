@@ -5,11 +5,11 @@ import { DrawerPostContainer, DrawerPostSkeletonBody } from './styles';
 const DrawerPostSkeleton: FC = () => (
   <>
     {new Array(10).fill('').map((_, idx) => (
-      <DrawerPostContainer isDismissing={false} key={idx}>
+      <DrawerPostContainer isDismissing={false} key={idx} style={{ opacity: 1 - idx / 8 }}>
         <div style={{ marginBottom: 10 }} />
         <SkeletonTheme color="#ddd" highlightColor="#fff">
           <div style={{ display: 'flex' }}>
-            <div style={{ display: 'inline-block', width: 20, height: 20, marginRight: 10 }}>
+            <div style={{ width: 20, height: 20, marginRight: 10 }}>
               <Skeleton height={20} width={20} circle />
             </div>
             <div style={{ flexGrow: 1, height: 20 }}>

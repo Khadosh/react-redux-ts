@@ -59,6 +59,13 @@ export const postsSlice = createSlice({
     },
     dismissAll: (state) => {
       state.dismissingAll = true;
+    },
+    restoreAll: (state) => {
+      state.postList = state.postList.map((post) => ({
+        ...post,
+        dismissed: false
+      }));
+      state.dismissingAll = false;
     }
   }
 });
@@ -70,7 +77,8 @@ export const {
   choosePost,
   clearPost,
   dismissPost,
-  dismissAll
+  dismissAll,
+  restoreAll
 } = postsSlice.actions;
 
 /* Action Creators, used to call async methods */
