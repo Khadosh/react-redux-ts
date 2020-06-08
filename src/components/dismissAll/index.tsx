@@ -3,17 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   dismissAll,
   restoreAll,
-  selectIsFetching,
-  selectPosts
+  selectIsEmpty
 } from '../../features/redditPosts/redditPosts.slice';
 import { DismissAllButton } from './styles';
 
 const DismissAll: FC = () => {
   const dispatch = useDispatch();
-  const isFetching = useSelector(selectIsFetching);
-  const posts = useSelector(selectPosts);
+  const isEmpty = useSelector(selectIsEmpty);
 
-  if (!isFetching && !posts.length)
+  if (isEmpty)
     return <DismissAllButton onClick={() => dispatch(restoreAll())}>Restore All</DismissAllButton>;
 
   return <DismissAllButton onClick={() => dispatch(dismissAll())}>Dismiss All</DismissAllButton>;

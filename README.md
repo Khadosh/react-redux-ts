@@ -37,6 +37,7 @@ Since this project is not using predefiend configuration for eslint therefore it
 - I loved the new sliced implementation of redux, specially how clean it is, so I decided to go for it instead of the old school.
 - I chose styled-components for many reasons, but the one I like most is because it can handle the styling "logic" into a separate component and just inject props into to fire how to behave, instead of having complex (hard-to-read) implementations on the component to change the layout according the combination of viewport + application state.
 - React Testing Library instead of Enzyme: I always found enzyme counter-intuitive and you need to read a lot of documentation to test stuff that will mostly change on time (because it depends on the implementation). Instead react-testing-library relies on the functionality instead.
+- I followed the dry principle (don't repeat yourself) by adding redux selectors to remove code duplication on components
 
 ## Online Resources
 - https://www.npmjs.com/package/cra-template-redux-typescript
@@ -51,6 +52,7 @@ Since this project is not using predefiend configuration for eslint therefore it
 - https://momentjs.com/docs/#/displaying/fromnow/
 - https://styled-components.com/docs/basics#animations
 - https://stackoverflow.com/questions/24111813/
+- https://refactoring.guru/
 
 ## Endpoints
 https://www.reddit.com/top.json?limit=10&t=month&after=<Provided after first request>

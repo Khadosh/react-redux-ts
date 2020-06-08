@@ -8,7 +8,8 @@ import {
   selectPosts,
   selectPost,
   selectDismissingAll,
-  selectIsFetching
+  selectIsFetching,
+  selectIsEmpty
 } from './redditPosts.slice';
 import DrawerPost from '../../components/drawerPost';
 import PostDetails from '../../components/postDetail';
@@ -28,6 +29,8 @@ const RedditPosts: FC = () => {
   const selectedPost = useSelector(selectPost);
   const dismissingAll = useSelector(selectDismissingAll);
   const isFetchingPosts = useSelector(selectIsFetching);
+  const isEmpty = useSelector(selectIsEmpty);
+
   const handleDismissAnimation = (id: string) => {
     return (evt: any): void => {
       evt.stopPropagation();
@@ -39,6 +42,7 @@ const RedditPosts: FC = () => {
     <>
       <Drawer shouldCollapse={!!selectedPost}>
         {isFetchingPosts && <DrawerPostSkeleton />}
+        {isEmpty && <button onClick={() => dispatch(fetchPosts())}>Fetch More!</button>}
         {postList.map((post: PostState) => (
           <DrawerPost
             key={post.id}

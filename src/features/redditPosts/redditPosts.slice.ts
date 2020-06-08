@@ -6,9 +6,9 @@ interface DefaultState {
   postList: PostState[];
   selectedPost?: PostState;
   after?: string;
-  fetching?: boolean;
   errorMessage?: string;
-  dismissingAll?: boolean;
+  fetching: boolean;
+  dismissingAll: boolean;
 }
 
 const initialState: DefaultState = {
@@ -115,8 +115,10 @@ export const fetchPosts = (after?: string): AppThunk => async (dispatch) => {
 /* Selectors */
 export const selectPosts = (state: RootState): PostState[] =>
   state.posts.postList.filter((post) => !post.dismissed);
-export const selectPost = (state: RootState): any => state.posts.selectedPost;
-export const selectDismissingAll = (state: RootState): any => state.posts.dismissingAll;
-export const selectIsFetching = (state: RootState): any => state.posts.fetching;
+export const selectPost = (state: RootState): PostState | undefined => state.posts.selectedPost;
+export const selectDismissingAll = (state: RootState): boolean => state.posts.dismissingAll;
+export const selectIsFetching = (state: RootState): boolean => state.posts.fetching;
+export const selectIsEmpty = (state: RootState): boolean =>
+  !state.posts.fetching && !state.posts.postList.filter((post) => !post.dismissed).length;
 
 export default postsSlice.reducer;
