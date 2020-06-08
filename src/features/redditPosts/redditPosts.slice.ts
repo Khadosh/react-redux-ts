@@ -57,8 +57,14 @@ export const postsSlice = createSlice({
       const post = state.postList.find((post) => post.id === id);
       if (post) post.dismissed = true;
     },
-    dismissAll: (state) => {
+    setDismissingAll: (state) => {
       state.dismissingAll = true;
+    },
+    dismissAll: (state) => {
+      state.postList = state.postList.map((post) => ({
+        ...post,
+        dismissed: true
+      }));
     },
     restoreAll: (state) => {
       state.postList = state.postList.map((post) => ({
@@ -77,13 +83,15 @@ export const {
   choosePost,
   clearPost,
   dismissPost,
-  dismissAll,
-  restoreAll
+  restoreAll,
+  setDismissingAll,
+  dismissAll
 } = postsSlice.actions;
 
 /* Action Creators, used to call async methods */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const fetchPosts = (after?: string): AppThunk => async (dispatch) => {
+export const fetchPosts = (): AppThunk => async (dispatch, getState) => {
+  const after = getState().posts.after;
   try {
     const url = `https://www.reddit.com/top.json?limit=50${after ? `&after=${after}` : ''}`;
     dispatch(fetchingPosts());
@@ -112,6 +120,13 @@ export const fetchPosts = (after?: string): AppThunk => async (dispatch) => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const dismissAllAsync = (): AppThunk => (dispatch) => {
+  dispatch(setDismissingAll());
+  // delay to allow dismiss animation to finish
+  setTimeout(() => dispatch(dismissAll()), 300);
+};
+
 /* Selectors */
 export const selectPosts = (state: RootState): PostState[] =>
   state.posts.postList.filter((post) => !post.dismissed);
@@ -119,6 +134,6 @@ export const selectPost = (state: RootState): PostState | undefined => state.pos
 export const selectDismissingAll = (state: RootState): boolean => state.posts.dismissingAll;
 export const selectIsFetching = (state: RootState): boolean => state.posts.fetching;
 export const selectIsEmpty = (state: RootState): boolean =>
-  !state.posts.fetching && !state.posts.postList.filter((post) => !post.dismissed).length;
+  !state.posts.fetching && !state.posts.postList.some((post) => !post.dismissed);
 
 export default postsSlice.reducer;

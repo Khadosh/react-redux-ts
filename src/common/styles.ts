@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const DismissAllButton = styled.button`
+export const ActionButton = styled.button`
   margin: 10px auto;
   height: 30px;
   text-align: center;

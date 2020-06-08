@@ -8,13 +8,13 @@ import {
   selectPosts,
   selectPost,
   selectDismissingAll,
-  selectIsFetching,
-  selectIsEmpty
+  selectIsFetching
 } from './redditPosts.slice';
 import DrawerPost from '../../components/drawerPost';
 import PostDetails from '../../components/postDetail';
 import DrawerPostSkeleton from '../../components/drawerPost/drawerPost.skeleton';
 import { PostState } from '../../common/types';
+import { ActionButton } from '../../common/styles';
 
 import { Drawer } from './styles';
 
@@ -29,7 +29,6 @@ const RedditPosts: FC = () => {
   const selectedPost = useSelector(selectPost);
   const dismissingAll = useSelector(selectDismissingAll);
   const isFetchingPosts = useSelector(selectIsFetching);
-  const isEmpty = useSelector(selectIsEmpty);
 
   const handleDismissAnimation = (id: string) => {
     return (evt: any): void => {
@@ -40,19 +39,19 @@ const RedditPosts: FC = () => {
 
   return (
     <>
-      <Drawer shouldCollapse={!!selectedPost}>
-        {isFetchingPosts && <DrawerPostSkeleton />}
-        {isEmpty && <button onClick={() => dispatch(fetchPosts())}>Fetch More!</button>}
+      <Drawer shouldCollapse={!!selectedPost} removeScroll={dismissingAll}>
         {postList.map((post: PostState) => (
           <DrawerPost
             key={post.id}
             post={post}
             onSelection={(id: string) => dispatch(choosePost(id))}
             onDismissAnimationStart={handleDismissAnimation}
-            onDismissAnimationEnd={(id: string) => dispatch(dismissPost(id))}
+            onDismissAnimationEnd={(id: string) => !dismissingAll && dispatch(dismissPost(id))}
             isDismissing={postToDismissId === post.id || dismissingAll}
           />
         ))}
+        {isFetchingPosts && <DrawerPostSkeleton />}
+        <ActionButton onClick={() => dispatch(fetchPosts())}>Fetch More!</ActionButton>
       </Drawer>
       <PostDetails onClose={() => dispatch(clearPost())} post={selectedPost} />
     </>

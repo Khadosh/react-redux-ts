@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  dismissAll,
+  dismissAllAsync,
   restoreAll,
   selectIsEmpty
 } from '../../features/redditPosts/redditPosts.slice';
-import { DismissAllButton } from './styles';
+import { ActionButton } from '../../common/styles';
 
 const DismissAll: FC = () => {
   const dispatch = useDispatch();
   const isEmpty = useSelector(selectIsEmpty);
 
   if (isEmpty)
-    return <DismissAllButton onClick={() => dispatch(restoreAll())}>Restore All</DismissAllButton>;
+    return <ActionButton onClick={() => dispatch(restoreAll())}>Restore All</ActionButton>;
 
-  return <DismissAllButton onClick={() => dispatch(dismissAll())}>Dismiss All</DismissAllButton>;
+  return <ActionButton onClick={() => dispatch(dismissAllAsync())}>Dismiss All</ActionButton>;
 };
 
 export default DismissAll;

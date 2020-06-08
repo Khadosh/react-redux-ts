@@ -25,7 +25,7 @@ const PostDetails: FC<DefaultProps> = ({ post, onClose }) => {
           <button onClick={onClose}>Go Back</button>
         </PostDetailsCardHeader>
         <PostDetailsCardBody>
-          <img src={thumbnail} />
+          <img src={thumbnail} alt={title} />
           <p>{title}</p>
         </PostDetailsCardBody>
       </PostDetailsCard>

@@ -25,11 +25,9 @@ Since this project is not using predefiend configuration for eslint therefore it
 - [x] Create Post List component - Drawer + Detail
 - [x] Show post detail on click + UT - Expandable vs Modal
 - [x] Remove Post from list + UT
-- [ ] Remove all posts + UT
-- [ ] Fetch more posts + UT
-- [ ] Pagination vs Infinite Scrolling + UT
-- [ ] Filter + UT
-- [ ] Add CSS Animations
+- [x] Remove all posts + UT
+- [x] Fetch more posts + UT
+- [x] Add CSS Animations
 
 ## Decition Making
 - I choose the typescript template since I didn't use typescript before and I found this as a good oportunity to learn deeper about it.

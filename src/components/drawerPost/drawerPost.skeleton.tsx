@@ -4,8 +4,8 @@ import { DrawerPostContainer, DrawerPostSkeletonBody } from './styles';
 
 const DrawerPostSkeleton: FC = () => (
   <>
-    {new Array(10).fill('').map((_, idx) => (
-      <DrawerPostContainer isDismissing={false} key={idx} style={{ opacity: 1 - idx / 8 }}>
+    {new Array(9).fill('').map((_, idx) => (
+      <DrawerPostContainer isDismissing={false} key={idx} style={{ opacity: 1 - idx / 10 }}>
         <div style={{ marginBottom: 10 }} />
         <SkeletonTheme color="#ddd" highlightColor="#fff">
           <div style={{ display: 'flex' }}>
