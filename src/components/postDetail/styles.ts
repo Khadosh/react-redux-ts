@@ -1,7 +1,23 @@
 import styled from 'styled-components';
 
+interface props {
+  shouldHide: boolean;
+}
+
 export const PostDetailsContainer = styled.div`
   flex-grow: 1;
+  overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    background-color: white;
+    position: absolute;
+    top: 70px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    transition: 0.3s all ease;
+    margin-left: ${({ shouldHide }: props) => (shouldHide ? '100vw' : 0)};
+  }
 `;
 
 export const PostDetailsCard = styled.div`
