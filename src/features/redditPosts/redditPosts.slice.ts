@@ -11,7 +11,7 @@ interface DefaultState {
   dismissingAll: boolean;
 }
 
-const initialState: DefaultState = {
+export const initialState: DefaultState = {
   postList: [],
   selectedPost: undefined,
   after: '',
