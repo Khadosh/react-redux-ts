@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../../app/store';
 import { PostState } from '../../common/types';
 
-interface DefaultState {
+export interface DefaultState {
   postList: PostState[];
   selectedPost?: PostState;
   after?: string;

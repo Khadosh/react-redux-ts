@@ -31,6 +31,7 @@ const DrawerPost: FC<DefaultProps> = ({
     onClick={() => onSelection(id)}
     onAnimationEnd={() => onDismissAnimationEnd(id)}
     isDismissing={isDismissing}
+    data-testid="drawer-post"
   >
     <DrawerPostHeader>
       <DrawerPostHeaderTitle>

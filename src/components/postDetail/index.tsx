@@ -17,7 +17,7 @@ const PostDetails: FC<DefaultProps> = ({ post = {}, onClose }) => {
   const shouldHide = !Object.keys(post).length;
   const { author, thumbnail, title } = post;
   return (
-    <PostDetailsContainer shouldHide={shouldHide}>
+    <PostDetailsContainer data-testid="post-details" shouldHide={shouldHide}>
       {!shouldHide && (
         <PostDetailsCard>
           <PostDetailsCardHeader>

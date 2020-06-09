@@ -11,30 +11,15 @@ import reducer, {
   restoreAll
 } from './redditPosts.slice';
 
-const mockedData = {
-  postList: [
-    {
-      id: 'gyfedz',
-      author: 'rextraneous',
-      title: 'A short story',
-      thumbnail: 'https://b.thumbs.redditmedia.com/BhCqiVdXZqjaGcW5nFNyRaqjrRqFw1dJiWihm9E1fCo.jpg',
-      created: 1591576055,
-      comments_number: 1773,
-      viewed: false,
-      dismissed: false
-    }
-  ],
-  after: 't3_gy5nxy',
-  errorMessage: 'Something went wrong'
-};
+import { mockedData } from './testData';
 
 describe('Reddit Posts Slice', () => {
-  it('fetchingPosts should set fetching to true', () => {
+  test('fetchingPosts should set fetching to true', () => {
     const result = reducer(initialState, fetchingPosts());
     expect(result.fetching).toBeTruthy();
   });
 
-  it('fetchPostSuccess should update the PostList, after and clear up flags', () => {
+  test('fetchPostSuccess should update the PostList, after and clear up flags', () => {
     const { postList, after } = mockedData;
     const result = reducer(initialState, fetchPostSuccess(mockedData));
     expect(result.postList).toEqual(postList);
@@ -44,7 +29,7 @@ describe('Reddit Posts Slice', () => {
     expect(result.dismissingAll).toBeFalsy();
   });
 
-  it('fetchPostFailure should set up an error message and clear up flags', () => {
+  test('fetchPostFailure should set up an error message and clear up flags', () => {
     const { errorMessage } = mockedData;
     const result = reducer(initialState, fetchPostFailure(mockedData));
     expect(result.errorMessage).toEqual(errorMessage);
@@ -54,7 +39,7 @@ describe('Reddit Posts Slice', () => {
     expect(result.dismissingAll).toBeFalsy();
   });
 
-  it(`choosePost set selected post and update it's value to viewed`, () => {
+  test(`choosePost set selected post and update it's value to viewed`, () => {
     const post = mockedData.postList[0];
     const expectedResult = {
       ...post,
@@ -68,7 +53,7 @@ describe('Reddit Posts Slice', () => {
     expect(result.selectedPost).toEqual(expectedResult);
   });
 
-  it('clearPost should set selectedPost to undefined', () => {
+  test('clearPost should set selectedPost to undefined', () => {
     const state = {
       ...initialState,
       postList: mockedData.postList,
@@ -79,7 +64,7 @@ describe('Reddit Posts Slice', () => {
     expect(result.selectedPost).toBeUndefined();
   });
 
-  it(`choosePost should set selected post and update it's value to viewed`, () => {
+  test(`choosePost should set selected post and update it's value to viewed`, () => {
     const post = mockedData.postList[0];
     const state = {
       ...initialState,
@@ -89,12 +74,12 @@ describe('Reddit Posts Slice', () => {
     expect(result.postList[0].dismissed).toBeTruthy();
   });
 
-  it(`setDismissingAll should set dismissingAll to true`, () => {
+  test(`setDismissingAll should set dismissingAll to true`, () => {
     const result = reducer(initialState, setDismissingAll());
     expect(result.dismissingAll).toBeTruthy();
   });
 
-  it(`dismissAll should set dismissed = true to all entries in the postList`, () => {
+  test(`dismissAll should set dismissed = true to all entries in the postList`, () => {
     const state = { ...initialState, postList: mockedData.postList };
     const result = reducer(state, dismissAll());
     result.postList.map((post) => {
@@ -102,7 +87,7 @@ describe('Reddit Posts Slice', () => {
     });
   });
 
-  it(`restoreAll should set dismissed = false to all entries in the postList`, () => {
+  test(`restoreAll should set dismissed = false to all entries in the postList`, () => {
     const state = {
       ...initialState,
       postList: mockedData.postList.map((post) => ({

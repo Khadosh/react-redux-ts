@@ -3,7 +3,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { DrawerPostContainer, DrawerPostSkeletonBody } from './styles';
 
 const DrawerPostSkeleton: FC = () => (
-  <>
+  <div data-testid="drawer-post-skeleton">
     {new Array(9).fill('').map((_, idx) => (
       <DrawerPostContainer isDismissing={false} key={idx} style={{ opacity: 1 - idx / 10 }}>
         <div style={{ marginBottom: 10 }} />
@@ -33,7 +33,7 @@ const DrawerPostSkeleton: FC = () => (
         </SkeletonTheme>
       </DrawerPostContainer>
     ))}
-  </>
+  </div>
 );
 
 export default DrawerPostSkeleton;

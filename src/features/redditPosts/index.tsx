@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPosts,
@@ -15,20 +15,18 @@ import PostDetails from '../../components/postDetail';
 import DrawerPostSkeleton from '../../components/drawerPost/drawerPost.skeleton';
 import { PostState } from '../../common/types';
 import { ActionButton } from '../../common/styles';
-
 import { Drawer } from './styles';
+import useFetchFirstTime from './useFetchFirstTime';
 
 const RedditPosts: FC = () => {
   const [postToDismissId, setPostToDismissId] = useState('');
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, []);
-
   const postList = useSelector(selectPosts);
   const selectedPost = useSelector(selectPost);
   const dismissingAll = useSelector(selectDismissingAll);
   const isFetchingPosts = useSelector(selectIsFetching);
+
+  useFetchFirstTime();
 
   const handleDismissAnimation = (id: string) => {
     return (evt: any): void => {
@@ -46,7 +44,7 @@ const RedditPosts: FC = () => {
 
   return (
     <>
-      <Drawer shouldCollapse={!!selectedPost} removeScroll={dismissingAll}>
+      <Drawer data-testid="drawer" shouldCollapse={!!selectedPost} removeScroll={dismissingAll}>
         {postList.map((post: PostState) => (
           <DrawerPost
             key={post.id}

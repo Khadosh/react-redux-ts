@@ -51,6 +51,11 @@ Since this project is not using predefiend configuration for eslint therefore it
 - https://styled-components.com/docs/basics#animations
 - https://stackoverflow.com/questions/24111813/
 - https://refactoring.guru/
+- https://testing-library.com/docs/example-react-redux
+- https://www.youtube.com/watch?v=h7ukDItVN_o 
+- https://codesandbox.io/s/pk22r6rkzm?module=%2Fsrc%2F__tests__%2Freact-redux.js
+- https://github.com/facebook/jest/issues/2007
+- https://testing-library.com/docs/guide-disappearance
 
 ## Endpoints
 https://www.reddit.com/top.json?limit=10&t=month&after=<Provided after first request>
