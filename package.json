@@ -60,5 +60,13 @@
     "hooks": {
       "pre-commit": "yarn lint & yarn test:pre-commit"
     }
-  }
+  },
+  
+    "jest": {
+      "coveragePathIgnorePatterns": [
+        "<rootDir>/src/index.tsx", 
+        "<rootDir>/src/serviceWorker.ts" 
+      ]
+    }
+  
 }
