@@ -8,6 +8,14 @@ $ yarn install
 $ yarn start
 ```
 
+## Available Scripts
+- "start": Initializes the application
+- "build": Creates a bundle
+- "test": Run ut tests
+- "test:coverage": Run ut in coverage mode
+- "lint": run linting for the application
+- "test:pre-commit": run tests configured with CI = true for commiting
+
 ## Required
 - Node >= v10.16.3
 - Yarn >= v1.22.4
@@ -35,7 +43,9 @@ Since this project is not using predefiend configuration for eslint therefore it
 - I loved the new sliced implementation of redux, specially how clean it is, so I decided to go for it instead of the old school.
 - I chose styled-components for many reasons, but the one I like most is because it can handle the styling "logic" into a separate component and just inject props into to fire how to behave, instead of having complex (hard-to-read) implementations on the component to change the layout according the combination of viewport + application state.
 - React Testing Library instead of Enzyme: I always found enzyme counter-intuitive and you need to read a lot of documentation to test stuff that will mostly change on time (because it depends on the implementation). Instead react-testing-library relies on the functionality instead.
+- This project uses husky to run a pre-commit script running linting and ut. 
 - I followed the dry principle (don't repeat yourself) by adding redux selectors to remove code duplication on components
+- To simplify testing, I added into the test-utils file some helpers to mock functions and actions
 
 ## Online Resources
 - https://www.npmjs.com/package/cra-template-redux-typescript
