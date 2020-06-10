@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from '../../common/test-utils';
-import { selectPosts, selectIsFetching } from './redditPosts.slice';
+import { render, fireEvent, mockFunction, mockAction } from '../../common/test-utils';
+import { selectPosts, selectIsFetching, fetchPosts } from './redditPosts.slice';
 import RedditPosts from '.';
 
 jest.mock('./redditPosts.slice');
@@ -12,7 +12,7 @@ describe('Reddit Posts', () => {
   });
 
   test('can render with redux with defaults', () => {
-    (selectPosts as jest.Mock).mockReturnValue([]);
+    mockFunction(selectPosts, []);
     const { getByTestId, getByText } = render(<RedditPosts />);
     expect(getByTestId('drawer')).toBeInTheDocument();
     expect(getByTestId('post-details')).toBeInTheDocument();
@@ -20,9 +20,16 @@ describe('Reddit Posts', () => {
   });
 
   test('it will render the loader if selectIsFecthing is true', () => {
-    (selectPosts as jest.Mock).mockReturnValue([]);
-    (selectIsFetching as jest.Mock).mockReturnValue(true);
+    mockFunction(selectPosts, []);
+    mockFunction(selectIsFetching, true);
     const { getByTestId } = render(<RedditPosts />);
     expect(getByTestId('drawer-post-skeleton'));
+  });
+
+  test('Fetch More! Button Click should call "fetchPosts"', () => {
+    mockAction(fetchPosts);
+    const { getByText } = render(<RedditPosts />);
+    fireEvent.click(getByText(/fetch More/i));
+    expect(fetchPosts).toHaveBeenCalledTimes(1);
   });
 });

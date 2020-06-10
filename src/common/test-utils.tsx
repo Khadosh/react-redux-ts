@@ -18,3 +18,8 @@ export * from '@testing-library/react';
 
 // override render method
 export { render };
+
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+export const mockFunction = (fn: any, data: any): any => (fn as jest.Mock).mockReturnValue(data);
+export const mockAction = (fn: any, data: any = {}): any =>
+  mockFunction(fn as unknown, { type: fn.name, ...data });
