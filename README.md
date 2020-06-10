@@ -56,6 +56,7 @@ Since this project is not using predefiend configuration for eslint therefore it
 - https://codesandbox.io/s/pk22r6rkzm?module=%2Fsrc%2F__tests__%2Freact-redux.js
 - https://github.com/facebook/jest/issues/2007
 - https://testing-library.com/docs/guide-disappearance
+- https://github.com/facebook/jest/issues/9723https://github.com/facebook/jest/issues/9723
 
 ## Endpoints
 https://www.reddit.com/top.json?limit=10&t=month&after=<Provided after first request>
