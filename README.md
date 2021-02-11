@@ -37,7 +37,7 @@ Since this project is not using predefiend configuration for eslint therefore it
 - [x] Fetch more posts + UT
 - [x] Add CSS Animations
 
-## Decition Making
+## Decision Making
 - I choose the typescript template since I didn't use typescript before and I found this as a good oportunity to learn deeper about it.
 - On the layout, I chose a variation of the holy grail layout, listed on the online resources.
 - I loved the new sliced implementation of redux, specially how clean it is, so I decided to go for it instead of the old school.
